@@ -235,12 +235,11 @@ header img:hover {
 /*--------------------FOOTER--------------------*/
 
 footer {
-    background-color: #151f1f;
-    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #151f1f;
 }
 
 .footer-content {
@@ -258,8 +257,6 @@ footer {
 .footer-content div {
     height: 200px;
     padding: 20px 10px;
-    align-items: flex-start;
-
 }
 
 .footer-content div h2 {
