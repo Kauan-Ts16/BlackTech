@@ -244,23 +244,22 @@ footer {
 
 .footer-content {
     width: 100%;
+    height: 230px;
     padding: 20px 0px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     background-color: #151f1f;
     color: white;
-    border-radius: 3px;
-
 }
 
 .footer-content div {
-    height: 200px;
+    height: 100%;
     padding: 20px 10px;
 }
 
 .footer-content div h2 {
-    padding: 20px 0px;
+    padding: 10px 0px;
 }
 
 .footer-content div ul {

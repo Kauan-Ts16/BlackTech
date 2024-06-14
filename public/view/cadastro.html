@@ -13,10 +13,10 @@
 
     <!-- JS -->
     <script src="https://kit.fontawesome.com/fe41d20d0f.js" crossorigin="anonymous"></script>
-    <!-- <script src="../assets/js/validacao.js"></script> -->
+    <script src="../assets/js/cadastro.js"></script>
 
     <!-- TITLE -->
-    <title>BlackTech - Login</title>
+    <title>BlackTech - Cadastro</title>
 
 </head>
 
@@ -34,7 +34,7 @@
                 <li><a href="../index.html#products">All products</a></li>
                 <li><a href="">Categories</a></li>
                 <li>|</li>
-                <li><a href="cadastro.html">Account</a></li>
+                <li><a href="login.html">Account</a></li>
                 <li>
                     <img src="../assets/img/bag-white.png" alt="">
                 </li>
@@ -50,9 +50,19 @@
 
         <div class="card-cadastro">
 
-            <h1>Login</h1>
+            <h1>Cadastro</h1>
 
-            <form action="" id="form-login" method="">
+            <form action="" id="form-cadastro" method="">
+
+                <label for="nome">
+
+                    Nome
+                    <div class="input-box">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="nome" name="nome">
+                    </div>
+
+                </label>
 
                 <label for="email">
 
@@ -74,7 +84,17 @@
 
                 </label>
 
-                <button type="submit">Logar</button>
+                <label for="confirmarSenha">
+
+                    Confirmar Senha
+                    <div class="input-box">
+                        <i class="fa-solid fa-key"></i>
+                        <input type="password" id="confirmarSenha" name="confirmarSenha">
+                    </div>
+
+                </label>
+
+                <button type="submit">Cadastrar</button>
 
             </form>
 
