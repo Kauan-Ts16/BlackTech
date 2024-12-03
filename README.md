@@ -12,15 +12,15 @@ O desenvolvimento deste sistema tem como finalidade aplicar conceitos de program
 #
 ### 🔧 **FUNCIONALIDADES**
 
-- *Cadastro e Login de Usuários:* Permite aos clientes criar uma conta e acessar suas funcionalidades personalizadas.
+- **Cadastro e Login de Usuários:** Permite aos clientes criar uma conta e acessar suas funcionalidades personalizadas.
 
-- *Listagem de Produtos:* Exibe notebooks disponíveis, com informações detalhadas como marca, preço e especificações.
+- **Listagem de Produtos:** Exibe notebooks disponíveis, com informações detalhadas como marca, preço e especificações.
 
-- *Carrinho de Compras:* Possibilita adicionar e remover notebooks, atualizar quantidades e visualizar o valor total.
+- **Carrinho de Compras:** Possibilita adicionar e remover notebooks, atualizar quantidades e visualizar o valor total.
 
-- *Checkout:* Simula o processo de finalização do pedido, gerando um resumo de compra.
+- **Checkout:** Simula o processo de finalização do pedido, gerando um resumo de compra.
 
-- *Administração:* Permite que administradores gerenciem produtos (cadastrar, editar e excluir).
+- **Administração:** Permite que administradores gerenciem produtos (cadastrar, editar e excluir).
 
 #
 ### 💻 **TECNOLOGIAS**
