@@ -1,6 +1,7 @@
 package com.api.BlackTechAPI.mapper;
 
 import com.api.BlackTechAPI.dto.post.UserPost;
+import com.api.BlackTechAPI.dto.put.UserPut;
 import com.api.BlackTechAPI.model.UserModel;
 import org.springframework.beans.BeanUtils;
 
@@ -12,7 +13,7 @@ public class UserMapper {
         return output;
     }
 
-    public static UserModel toMapper(UserPost input, UserModel output) {
+    public static UserModel toMapper(UserPut input, UserModel output) {
         BeanUtils.copyProperties(input, output);
         return output;
     }
