@@ -42,6 +42,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/black-tech-api/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/black-tech-api/user").permitAll()
 
+                        .requestMatchers(HttpMethod.GET, "/black-tech-api/user/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/black-tech-api/user/{id}").hasRole("ADMIN")
+
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
