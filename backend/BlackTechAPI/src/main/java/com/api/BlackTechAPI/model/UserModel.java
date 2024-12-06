@@ -35,10 +35,10 @@ public class UserModel implements Serializable {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userModel")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "userModel")
     private List<PhoneModel> phoneList = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userModel")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "userModel")
     private List<AddressModel> addressList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
