@@ -26,6 +26,9 @@ public class PhoneModel implements Serializable {
     @Column(nullable = false, unique = true, length = 11)
     private String number;
 
+    @Column(nullable = false, length = 2)
+    private String areaCode;
+
     @Column(nullable = false, length = 5)
     private String countryCode;
 
