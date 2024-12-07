@@ -25,6 +25,8 @@ public class AddressModel implements Serializable {
 
     private String street;
 
+    private int number;
+
     private String complement;
 
     private String city;
