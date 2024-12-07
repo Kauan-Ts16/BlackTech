@@ -23,16 +23,21 @@ public class AddressModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer addressId;
 
+    @Column(nullable = false)
     private String street;
 
+    @Column(nullable = false)
     private int number;
 
     private String complement;
 
+    @Column(nullable = false)
     private String city;
 
+    @Column(nullable = false)
     private String state;
 
+    @Column(nullable = false, length = 9)
     private String postalCode;
 
     @ManyToOne
