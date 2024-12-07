@@ -55,7 +55,7 @@ public class UserValidate {
 
     public UserModel findByEmail(String email) {
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new ExceptionGeneric("User not found!", "User with email: " + email + " not found.", 400));
+                .orElseThrow(() -> new ExceptionGeneric("User not found!", "User with email: " + email + " not found.", 404));
     }
 
 }
