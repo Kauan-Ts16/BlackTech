@@ -38,12 +38,12 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserModel> getOne(@PathVariable(name = "id")UUID id) {
+    public ResponseEntity<UserModel> findById(@PathVariable(name = "id")UUID id) {
         return ResponseEntity.status(HttpStatus.OK).body(userService.findById(id));
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<UserModel>> getAll() {
+    public ResponseEntity<List<UserModel>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(userService.findAll());
     }
 }
