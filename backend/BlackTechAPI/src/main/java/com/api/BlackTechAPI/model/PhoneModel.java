@@ -23,7 +23,7 @@ public class PhoneModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer phoneId;
 
-    @Column(nullable = false, unique = true, length = 11)
+    @Column(nullable = false, unique = true, length = 9)
     private String number;
 
     @Column(nullable = false, length = 2)
