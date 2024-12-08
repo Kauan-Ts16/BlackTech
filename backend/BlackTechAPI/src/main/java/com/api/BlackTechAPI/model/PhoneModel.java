@@ -32,7 +32,7 @@ public class PhoneModel implements Serializable {
     @Column(nullable = false, length = 5)
     private String countryCode;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private UserModel userModel;
 }
