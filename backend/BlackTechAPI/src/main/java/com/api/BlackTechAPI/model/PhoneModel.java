@@ -23,13 +23,13 @@ public class PhoneModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer phoneId;
 
-    @Column(nullable = false, unique = true, length = 9)
+    @Column(nullable = false, unique = true, length = 10)
     private String number;
 
     @Column(nullable = false, length = 2)
     private String areaCode;
 
-    @Column(nullable = false, length = 5)
+    @Column(nullable = false, length = 4)
     private String countryCode;
 
     @ManyToOne
