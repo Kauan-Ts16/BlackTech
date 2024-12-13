@@ -28,8 +28,8 @@ public class AddressController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable(name = "id")Integer id) {
-        addressService.delete(id);
+    public ResponseEntity<Void> delete(@PathVariable(name = "id")Integer id, @AuthenticationPrincipal UserModel userModel) {
+        addressService.delete(id, userModel);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
 
