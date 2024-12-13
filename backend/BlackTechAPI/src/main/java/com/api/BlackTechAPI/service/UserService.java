@@ -8,6 +8,7 @@ import com.api.BlackTechAPI.mapper.UserMapper;
 import com.api.BlackTechAPI.model.RoleModel;
 import com.api.BlackTechAPI.model.UserModel;
 import com.api.BlackTechAPI.repository.AddressRepository;
+import com.api.BlackTechAPI.repository.PhoneRepository;
 import com.api.BlackTechAPI.repository.RoleRepository;
 import com.api.BlackTechAPI.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -26,6 +27,9 @@ public class UserService {
 
     @Autowired
     private AddressRepository addressRepository;
+
+    @Autowired
+    private PhoneRepository phoneRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -51,6 +55,7 @@ public class UserService {
     public void delete(UUID id) {
         userValidate.validateDelete(id);
         addressRepository.deleteAllByUserId(id);
+        phoneRepository.deleteAllByUserId(id);
         userRepository.deleteById(id);
     }
 
