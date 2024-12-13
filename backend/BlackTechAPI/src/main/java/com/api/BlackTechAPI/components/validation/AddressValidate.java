@@ -2,6 +2,7 @@ package com.api.BlackTechAPI.components.validation;
 
 import com.api.BlackTechAPI.dto.post.AddressPost;
 import com.api.BlackTechAPI.dto.put.AddressPut;
+import com.api.BlackTechAPI.enums.RoleName;
 import com.api.BlackTechAPI.exception.ExceptionGeneric;
 import com.api.BlackTechAPI.model.AddressModel;
 import com.api.BlackTechAPI.model.UserModel;
@@ -21,8 +22,9 @@ public class AddressValidate {
         validateUniqueAddressForUser(addressPost, userModel);
     }
 
-    public void validateDelete(Integer id) {
+    public void validateDelete(Integer id, UserModel userModel) {
         verifyExists(id);
+        validateUser(id, userModel);
     }
 
     public void validateUpdate(Integer id, AddressPut addressPut) {
@@ -47,6 +49,16 @@ public class AddressValidate {
         if (addressRepository.existsByNumberAndPostalCodeAndUserModel(addressPost.number(), addressPost.postalCode(), userModel)) {
             throw new ExceptionGeneric("Address already exists for this user!",
                     "This address (postal code and number) is already associated with the user.", 400);
+        }
+    }
+
+    private void validateUser(Integer id, UserModel userModel) {
+        AddressModel addressModel = findById(id);
+        boolean isOwner = userModel.getUserId().equals(addressModel.getUserModel().getUserId());
+        boolean isAdmin = userModel.getRole().getRoleName() == RoleName.ROLE_ADMIN;
+
+        if (!isOwner && !isAdmin) {
+            throw new ExceptionGeneric("Unauthorized action!", "You do not have permission to delete this address.", 403);
         }
     }
 
