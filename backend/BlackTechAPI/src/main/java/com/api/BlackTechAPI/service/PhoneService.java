@@ -25,7 +25,7 @@ public class PhoneService {
 
     @Transactional
     public PhoneModel save(PhonePost phonePost, UserModel userModel) {
-        phoneValidate.isValid(phonePost);
+        phoneValidate.isValid(phonePost, userModel);
         PhoneModel phoneModel = PhoneMapper.toMapper(phonePost);
         phoneModel.setUserModel(userModel);
 
