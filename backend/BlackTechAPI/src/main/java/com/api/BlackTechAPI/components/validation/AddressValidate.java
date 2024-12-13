@@ -16,10 +16,10 @@ public class AddressValidate {
     @Autowired
     private AddressRepository addressRepository;
 
+
     public void isValid(AddressPost addressPost, UserModel userModel) {
-        validateNumber(addressPost.number());
-        validatePostalCode(addressPost.postalCode());
-        validateUniqueAddressForUser(addressPost, userModel);
+        validateUserAddressLimit(userModel);
+        validateAddress(addressPost, userModel);
     }
 
     public void validateDelete(Integer id, UserModel userModel) {
@@ -33,22 +33,34 @@ public class AddressValidate {
         validatePostalCode(addressPut.postalCode());
     }
 
-    public void validateNumber(int number) {
+    private void validateAddress(AddressPost addressPost, UserModel userModel) {
+        validateNumber(addressPost.number());
+        validatePostalCode(addressPost.postalCode());
+        validateUniqueAddressForUser(addressPost, userModel);
+    }
+
+    private void validateNumber(int number) {
         if (number <= 0) {
             throw new ExceptionGeneric("Number is not valid!", "Number must be a positive value.", 400);
         }
     }
 
-    public void validatePostalCode(String postalCode) {
+    private void validatePostalCode(String postalCode) {
         if (!postalCode.matches("^\\d{5}-\\d{3}$")) {
             throw new ExceptionGeneric("Postal code is not valid!", "Postal code must follow the format XXXXX-XXX.", 400);
         }
     }
 
-    public void validateUniqueAddressForUser(AddressPost addressPost, UserModel userModel) {
+    private void validateUniqueAddressForUser(AddressPost addressPost, UserModel userModel) {
         if (addressRepository.existsByNumberAndPostalCodeAndUserModel(addressPost.number(), addressPost.postalCode(), userModel)) {
             throw new ExceptionGeneric("Address already exists for this user!",
                     "This address (postal code and number) is already associated with the user.", 400);
+        }
+    }
+
+    private void validateUserAddressLimit(UserModel userModel) {
+        if (addressRepository.countByUserModel(userModel) >= 2) {
+            throw new ExceptionGeneric("Address limit exceeded!", "User can have a maximum 2 address.", 400);
         }
     }
 
