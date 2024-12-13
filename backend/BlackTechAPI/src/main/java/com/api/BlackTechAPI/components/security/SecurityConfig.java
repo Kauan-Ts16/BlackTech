@@ -39,11 +39,27 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
+
+                        //PUBLIC
+
                         .requestMatchers(HttpMethod.POST, "/black-tech-api/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/black-tech-api/user").permitAll()
 
-                        .requestMatchers(HttpMethod.GET, "/black-tech-api/user/**").hasRole("ADMIN")
+                        //AUTHENTICATED
+
+                        .requestMatchers(HttpMethod.GET, "/black-tech-api/address/user").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/black-tech-api/phone/user").authenticated()
+
+                        //ADMIN
+
                         .requestMatchers(HttpMethod.DELETE, "/black-tech-api/user/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/black-tech-api/user/{id}").hasRole("ADMIN")
+
+                        .requestMatchers(HttpMethod.GET, "/black-tech-api/address/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/black-tech-api/address/all").hasRole("ADMIN")
+
+                        .requestMatchers(HttpMethod.GET, "/black-tech-api/phone/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/black-tech-api/phone/all").hasRole("ADMIN")
 
                         .anyRequest().authenticated()
                 )
