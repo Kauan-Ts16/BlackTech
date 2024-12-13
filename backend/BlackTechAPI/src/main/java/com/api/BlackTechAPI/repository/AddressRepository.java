@@ -21,4 +21,6 @@ public interface AddressRepository extends JpaRepository<AddressModel, Integer> 
     @Modifying
     @Query("DELETE FROM AddressModel a WHERE a.userModel.userId = ?1")
     void deleteAllByUserId(UUID userId);
+
+    int countByUserModel(UserModel userModel);
 }
