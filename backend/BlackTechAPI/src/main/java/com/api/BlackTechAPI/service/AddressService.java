@@ -33,8 +33,8 @@ public class AddressService {
     }
 
     @Transactional
-    public void delete(Integer id) {
-        addressValidate.validateDelete(id);
+    public void delete(Integer id, UserModel userModel) {
+        addressValidate.validateDelete(id, userModel);
         addressRepository.deleteById(id);
     }
 
