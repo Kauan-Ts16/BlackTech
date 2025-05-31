@@ -20,6 +20,7 @@ public class BrandController {
     @Autowired
     private BrandService brandService;
 
+
     @PostMapping
     public ResponseEntity<BrandModel> save(@RequestBody @Valid BrandPostDto brandPostDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(brandService.save(brandPostDto));
