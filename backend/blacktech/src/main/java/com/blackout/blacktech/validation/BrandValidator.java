@@ -20,13 +20,13 @@ public class BrandValidator {
         validateNameForCreate(brandPostDto.name());
     }
 
+    public void validateForDelete(UUID id) {
+        validateBrandExists(id);
+    }
+
     public void validateForUpdate(UUID id, BrandPutDto brandPutDto) {
         validateBrandExists(id);
         validateNameForUpdate(brandPutDto.name(), id);
-    }
-
-    public void validateForDelete(UUID id) {
-        validateBrandExists(id);
     }
 
     private void validateNameForCreate(String name) {
