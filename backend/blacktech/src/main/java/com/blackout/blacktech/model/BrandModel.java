@@ -28,7 +28,12 @@ public class BrandModel implements Serializable {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @Column(nullable = false)
+    private boolean isActive;
+
+    @Column(nullable = false)
     private LocalDateTime createdDate;
 
+    @Column(nullable = false)
     private LocalDateTime updateDate;
 }
