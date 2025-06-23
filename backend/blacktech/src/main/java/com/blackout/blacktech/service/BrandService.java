@@ -11,6 +11,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,7 +36,11 @@ public class BrandService {
     @Transactional
     public void delete(UUID id) {
         brandValidator.validateForDelete(id);
-        brandRepository.deleteById(id);
+        BrandModel brandModel = findById(id);
+        brandModel.setActive(false);
+        brandModel.setUpdateDate(LocalDateTime.now());
+
+        brandRepository.save(brandModel);
     }
 
     @Transactional
@@ -46,13 +51,41 @@ public class BrandService {
         return brandRepository.save(brandModel);
     }
 
+    @Transactional
+    public BrandModel reactive(UUID id) {
+        brandValidator.validateForReactivation(id);
+        BrandModel brandModel = findById(id);
+        brandModel.setActive(true);
+        brandModel.setUpdateDate(LocalDateTime.now());
+
+        return brandRepository.save(brandModel);
+    }
+
     public BrandModel findById(UUID id) {
         return brandRepository.findById(id)
-                .orElseThrow(() -> new ExceptionGeneric("Brand does not found!", "No brand found with id: "+ id, 404));
+                .orElseThrow(() -> new ExceptionGeneric("Brand not found!", "No brand found with id: "+ id, 404));
+    }
+
+    public BrandModel findByIdAndIsActiveTrue(UUID id) {
+        return brandRepository.findByIdAndIsActiveTrue(id)
+                .orElseThrow(() -> new ExceptionGeneric("Brand not found!", "No brand found with id: "+ id, 404));
+    }
+
+    public BrandModel findByIdAndIsActiveFalse(UUID id) {
+        return brandRepository.findByIdAndIsActiveFalse(id)
+                .orElseThrow(() -> new ExceptionGeneric("Brand not found!", "No inactive brand found with id: "+ id, 404));
     }
 
     public List<BrandModel> findAll() {
         return brandRepository.findAll();
+    }
+
+    public List<BrandModel> findAllByIsActiveTrue() {
+        return brandRepository.findAllByIsActiveTrue();
+    }
+
+    public List<BrandModel> findAllByIsActiveFalse() {
+        return brandRepository.findAllByIsActiveFalse();
     }
 
 }
