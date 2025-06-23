@@ -11,6 +11,7 @@ public class BrandMapper {
 
     public static BrandModel toMapper(BrandPostDto input) {
         BrandModel output = new BrandModel();
+        output.setActive(true);
         output.setCreatedDate(LocalDateTime.now());
         output.setUpdateDate(LocalDateTime.now());
         BeanUtils.copyProperties(input, output);
